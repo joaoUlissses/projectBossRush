@@ -8,27 +8,60 @@ oeste	=keyboard_check(vk_left)
 dash	=keyboard_check(vk_space)
 
 #region movimento
-if(norte){
-		y-=spd
-		ultimoLado="Norte"
+
+velH = (leste-oeste) *spd
+velV = (norte - sul)	*spd
+
+rolagemH=spd*3*image_xscale
+if(ultimoLado="Norte"){
+	rolagemV=spd*3
+}if(ultimoLado="Sul"){
+	rolagemV=spd*3*-1
+}
+xscale = image_xscale
+
+if(!place_meeting(x,y+3,objTotem)){
+	if(norte){
+			y-=velV
+			ultimoLado="Norte"
 	}
-if(sul){
-		y+=spd
-		ultimoLado="Sul"
+	if(sul){
+			y-=velV
+			ultimoLado="Sul"
 	}
-if(leste){
-		x+=spd
-		image_xscale=1
-		ultimoLado="Leste"
-	}
-if(oeste){
-		x-=spd
-		image_xscale=-1
-		ultimoLado="Oeste"
-	}
+}if(place_meeting(x,y+3,objTotem)){
+		if(ultimoLado=="Norte"){
+			y+=5	
+		}
+		if(ultimoLado=="Sul"){
+			y-=5	
+		}
+}
+if (!place_meeting(x+3, y, objTotem)) { 
+	if (leste) {
+        x += velH;                              
+        image_xscale = 1;                       
+        ultimoLado = "Leste";
+    }
+	
+	if (oeste) {
+        x += velH;
+        image_xscale = -1; 
+        ultimoLado = "Oeste"; 
+    }
+}else if(place_meeting(x+3, y, objTotem)) {
+			if(ultimoLado=="Oeste"){
+			x+=5	
+		}
+		if(ultimoLado=="Leste"){
+			x-=5	
+		}
+}
+
 	if(dashDelay>0){
 		dashDelay--	
 	}
+
 #endregion
 
 switch (estado) {
@@ -57,7 +90,11 @@ switch (estado) {
             image_index = 0;
         }
 		if(!leste and !oeste){
-			estado="MovendoV"
+			if(norte or sul){
+				estado="MovendoV"
+			}else{
+				estado="Parado"
+			}
 			image_index=0
 		}if(dash and dashDelay<=0){
 			estado="Dash"	
@@ -67,7 +104,7 @@ switch (estado) {
     }
    
 	case  "MovendoV": {
-        sprite_index = sprPlayerMovendoV;
+        sprite_index = sprPlayerMovendoVN;
         if (!norte and !sul and !leste and !oeste) {
             estado = "Parado";
             image_index = 0;
@@ -84,16 +121,19 @@ switch (estado) {
     }
 	
 	case "Dash":{
-		sprite_index=sprPlayerDash
 		dashDelay=30
 		switch(ultimoLado){
-			case"Norte":y-=rolagem
+			case"Norte":y-=rolagemV
+		sprite_index=sprPlayerDashV
 			break;
-			case"Sul": y+=rolagem
+			case"Sul": y-=rolagemV
+		sprite_index=sprPlayerDashV	
 			break;
-			case"Leste":x+=rolagem
+			case"Leste":x+=rolagemH
+		sprite_index=sprPlayerDash	
 			break;
-			case"Oeste":x-=rolagem
+			case"Oeste":x+=rolagemH
+		sprite_index=sprPlayerDash	
 			break;
 		}
 		if(image_index>=image_number-1){

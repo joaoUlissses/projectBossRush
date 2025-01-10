@@ -1,16 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"objPlayer",
+  "%Name":"objZePilantra",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objPlayer",
+  "name":"objZePilantra",
   "overriddenProperties":[],
   "parent":{
-    "name":"player",
-    "path":"folders/Objetos/player.yy",
+    "name":"boss",
+    "path":"folders/Objetos/boss.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -24,26 +25,16 @@
   "physicsRestitution":0.1,
   "physicsSensor":false,
   "physicsShape":1,
-  "physicsShapePoints":[
-    {"x":0.0,"y":0.0,},
-    {"x":60.0,"y":0.0,},
-    {"x":60.0,"y":60.0,},
-    {"x":0.0,"y":60.0,},
-  ],
+  "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v1","%Name":"variable_name","filters":[],"listItems":[],"multiselect":false,"name":"variable_name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprPlayerParado",
-    "path":"sprites/sprPlayerParado/sprPlayerParado.yy",
+    "name":"sprBossZePilantra",
+    "path":"sprites/sprBossZePilantra/sprBossZePilantra.yy",
   },
-  "spriteMaskId":{
-    "name":"Sprite9",
-    "path":"sprites/Sprite9/Sprite9.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }
