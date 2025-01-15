@@ -3,10 +3,10 @@ var cam = instance_create_layer(x,y,layer,ObjCamera)
 cam.alvo=id
 
 spd = 5
-velH =0
-velV =0
-rolagemV= 0
-rolagemH=0
+hsp =0
+vsp =0
+DashVel= 12
+DashVelBase=DashVel
 estado="Parado"
 ultimoLado="Leste"
-dashDelay=0
+DashDelay=0
